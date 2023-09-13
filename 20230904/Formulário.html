@@ -1,0 +1,141 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Formulário IFSP </title>
+        <style>
+            td
+            {
+                text-align: center;
+            }
+        </style>
+
+        <script lang="JavaScript">
+            
+            function gerarformulario()
+            {
+                var prontuario, nome, email, curso, periodo, ingresso, extensao1,  extensao2,  extensao3, nivelsat;   
+
+                prontuario = document.frmDados.txtProntuario.value;
+                nivelsat = document.frmDados.txtNivelSat.value;
+                nome = document.frmDados.txtNome.value;
+                email = document.frmDados.txtEmail.value;
+                curso = document.frmDados.txtCursos.value;
+                ingresso = document.frmDados.txtIngresso.value;
+                periodo = document.frmDados.txtPeriodo.value;
+                extensao1 = (document.frmDados.txtExtensao1.checked?"(x) Música <br>":"(  ) Música <br>");
+                extensao2 = (document.frmDados.txtExtensao2.checked?"(x) Pintura <br>":"(  ) Pintura <br>");
+                extensao3 = (document.frmDados.txtExtensao3.checked?"(x) Teatro <br>":"(  ) Teatro <br>");
+                
+                
+                document.write("<style>")
+                    document.write("table{ border-style: solid; width: 450px; height: 480px; }")
+                    document.write("td{ width: 50px; height: 30px; border-style: solid; border-width: 2px; }")
+                    document.write("#menor{ border-style: solid; border-width: 1px; width: 100; height: 25px; display: inline-block; }")
+                    document.write("#meio{ text-align: center; border-style: solid; border-width: 1px; width: 200; height: 40px; display: inline-block; }")
+                    document.write("#maior{ border-style: solid; border-width: 1px; width: 300; height: 25px; display: inline-block; }")
+                document.write("</style>")
+
+                document.write("<center>")    
+
+                    document.write("<table>");
+                            
+                        document.write("<tr>"); 
+                            document.write("<td rowlspan='2'> <img src='logoIFSP.png' width='200' height='50'> </td>");
+                        document.write("</tr>");
+
+                        document.write("<tr>"); 
+                            document.write("<td colspan='5' rowlspan='2'> Prontuário: <div id='menor'> " + prontuario + "</div></td>");
+                            document.write("<td colspan='4' rowlspan='2'> Satisfação %: <br> <div id='menor'> "+ nivelsat +"</div></td>");
+                        document.write("</tr>");
+
+                        document.write("<tr>") ;
+                            document.write("<td colspan='9'> Nome: <div id='maior'> " + nome + "</div></td>");
+                        document.write("</tr>");
+
+                        document.write("<tr>");
+                            document.write("<td colspan='9'> E-mail: <div id='maior'> " + email + "</div></td>");                        
+                        document.write("</tr>");
+
+                        document.write("<tr>");
+                            document.write("<td colspan='6'> Curso: <div id='meio'>" + curso + "</div></td>");
+                            document.write("<td colspan='3'> Ingresso: <div id='menor'>" + ingresso + "</div></td>");
+                        document.write("</tr>");
+
+                        document.write("<tr>"); 
+                            document.write("<td colspan='9'> Período: </td>");
+                        document.write("</tr>");  
+
+                        document.write("<tr>"); 
+                            if(periodo == "M")
+                            {
+                                document.write("<td colspan='3'> (x) Manhã </td>");
+                                document.write("<td colspan='3'> ( ) Tarde </td>");
+                                document.write("<td colspan='3'> ( ) Noite </td>");
+                            }
+                            if(periodo == "T")
+                            {
+                                document.write("<td colspan='3'> ( ) Manhã </td>");
+                                document.write("<td colspan='3'> (x) Tarde </td>");
+                                document.write("<td colspan='3'> ( ) Noite </td>");
+                            }
+                            if(periodo == "N")
+                            {
+                                document.write("<td colspan='3'> ( ) Manhã </td>");
+                                document.write("<td colspan='3'> ( ) Tarde </td>");
+                                document.write("<td colspan='3'> (x) Noite </td>");
+                            }
+                        document.write("</tr>");
+
+                        document.write("<tr>"); 
+                            document.write("<td colspan='9' rowlspan='4'> ")
+                                document.write(" Atividades de Extensão: <br> ") 
+                                document.write(extensao1);
+                                document.write(extensao2);
+                                document.write(extensao3);
+                                document.write("</td>");
+                        document.write("</tr>");
+
+                    document.write("</table>");
+
+                document.write("</center>")
+            }
+        </script>
+        
+        
+    </head>
+    <body>
+        <form name="frmDados" >
+            <b> Prontuário: </b> <input type="text" name="txtProntuario" value="CB"> <br><br>
+            <b> Nome: </b> <input type="text" name="txtNome" value="Informe seu nome completo"> <br><br>
+            <b> E-mail institucional: </b> <input type="email" name="txtEmail" value="seu.email@aluno.ifsp.edu.br"> <br><br>
+            <b> Curso: </b>
+            <select name="txtCursos">
+                <option value="Ensino Médio EJA"> Ensino Médio EJA </option> 
+                <option value="Técnico em Informática Integrado ao Ensino Médio"> Técnico em Informática Integrado ao Ensino Médio </option>
+                <option value="Técnico em Eventos Integrado ao Ensino Médio"> Técnico em Eventos Integrado ao Ensino Médio </option>
+                <option value="Técnico em Automação Industrial"> Técnico em Automação Industrial </option> 
+                <option value="Engenharia de Controle e Automação"> Engenharia de Controle e Automação </option>
+                <option value="Bacharelado em Turismo"> Bacharelado em Turismo </option> 
+                <option value="Tecnologia em Análise e Desenvolvimento de Sistemas"> Tecnologia em Análise e Desenvolvimento de Sistemas</option>
+                <option value="Tecnologia em Automação Indústrial"> Tecnologia em Automação Indústrial </option> 
+                <option value="Tecnologia em Gestão de Turismo"> Tecnologia em Gestão de Turismo </option> 
+                <option value="Licenciatura em Letras"> Licenciatura em Letras </option> 
+                <option value="Licenciatura em Matemática"> Licenciatura em Matemática </option> 
+            </select> <br><br>
+            <b> Período: </b>
+            <input type="radio" name="txtPeriodo" value="M" checked> Manhã
+            <input type="radio" name="txtPeriodo" value="T"> Tarde
+            <input type="radio" name="txtPeriodo" value="N"> Noite <br><br>
+            <b> Data de ingresso: </b> <input type="date" name="txtIngresso"> <br><br>
+            <b> Atividades de extensão: </b><br>
+            <input type="checkbox" name="txtExtensao1" value="Musica"> Música <br>
+            <input type="checkbox" name="txtExtensao2" value="Pintura"> Pintura <br>
+            <input type="checkbox" name="txtExtensao3" value="Teatro"> Teatro <br><br>
+            <b> Nível de satisfação: </b> <input type="range" name="txtNivelSat" min="0" max="100"> <br><br>
+
+            <input type="button" value="Enviar" name="txtResultados" onclick="gerarformulario();">
+            <input type="reset" value="Limpar">
+        </form>        
+        
+    </body>
+</html>
